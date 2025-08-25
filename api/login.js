@@ -8,5 +8,10 @@ export default async function handler(req,res){
     prompt:"consent",
     state:gid
   }).toString()
+  if(req.query.show==="1"){
+    res.setHeader("Content-Type","text/plain; charset=utf-8")
+    res.end("https://discord.com/api/oauth2/authorize?"+p)
+    return
+  }
   res.redirect("https://discord.com/api/oauth2/authorize?"+p)
 }
